@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div ng-controller="UserProfileController as ctrl" style="top: 30%;"><h2>Registration</h2>
+		<form class="form-horizontal" name="myForm" role="form" ng-submit="ctrl.submit()">
+			<div class="form-group" ng-class="{'has-error': form.fstname.$dirty && form.fstname.$error.required}">
+				<label for="fstname" class="col-sm-3 control-label" style="text-align: right;">First Name:</label>
+				<div class="col-sm-6">
+					<input type="text" name="fstname" id="fstname" class="form-control" placeholder="First name"
+						ng-model="ctrl.user.fstname" required />
+						<span ng-show="form.fstname.$dirty && form.fstname.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-class="{'has-error': form.useremail.$dirty && form.useremail.$error.required}">
+				<label for="useremail" class="col-sm-3 control-label" style="text-align: right;">User name:</label> 
+				<div class="col-sm-6">
+					<input type="email" name="useremail" id="useremail" pattern=".{8,}" class="form-control" ng-model="ctrl.user.useremail" required 
+						placeholder="Email ID"/>
+					<span ng-show="form.useremail.$dirty && form.useremail.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': form.password.$dirty && form.password.$error.required}">
+				<label for="password" class="col-sm-3 control-label" style="text-align: right;">Password:</label> 
+				<div class="col-sm-6">
+				 
+					<input type="password" name="password" id="password" class="form-control" ng-model="ctrl.user.password" required 
+						placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+						 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"/>
+					<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<button type="submit" ng-disabled="form$invalid || ctrl.dataLoading" class="btn btn-default">Register</button>
+					<button type="reset" class="btn btn-danger" ng-click="ctrl.reset()" >Clear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

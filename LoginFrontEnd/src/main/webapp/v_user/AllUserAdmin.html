@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+<script src="resources/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+	<div ng-controller="UserProfileController as ctrl">
+		<h3>List of users</h3>
+		<input type="hidden" value="N" ng-model="myfilter"/>
+		<table class="table table-striped" style="width: 100%">
+			<tr style="font-weight: bold;">
+				<td style="width: 30%">User Name</td>
+				<td style="width: 40%">User Email</td>
+				<td style="width: 30%">Password</td>
+			</tr>
+			<tr ng-repeat="up in ctrl.users">
+				<td style="width: 30%">{{up.fstname}}</td>
+				<td style="width: 40%">{{up.useremail}}</td>
+				<td style="width: 30%">{{up.password}}</td>
+				
+			</tr>
+		</table>
+
+	</div>
+</body>
+</html>
